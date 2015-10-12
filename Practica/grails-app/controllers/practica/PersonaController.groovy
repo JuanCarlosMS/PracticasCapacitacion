@@ -6,8 +6,9 @@ class PersonaController {
     def persona
 
     def index() {
-        List<Persona> personas = personaService.listarPersonas(params)
-        render(view: '/persona/index', model:[personas:personas])
+        //List<Persona> personas = personaService.listarPersonas(params)
+        //render(view: '/persona/index', model:[personas:personas])
+        create()
     }
 
     def create() {

@@ -11,14 +11,34 @@
     <title>Crear persona</title>
 </head>
 
-<body>
-    <h1>Crear persona</h1>
-        <g:form controller = "persona" action = "guardar">
-            <br>Nombre<g:textField name="nombre">nombre</g:textField></br>
-            <br>Apellido Paterno<g:textField name="apellidoPaterno"></g:textField><br>
-            <br>Apellido Materno<g:textField name="apellidoMaterno"></g:textField></br>
-            <br>Edad<g:textField name="edad"></g:textField></br>
-            <g:submitButton name="botonCrear" value="Crear" />
+<body bgcolor="#e6e6fa">
+    <h1 align="center">Crear persona</h1>
+
+    <h1>Esta es la seccion para agregar "personas"</h1>
+
+    <table>
+        <g:form controller="persona" action = "guardar">
+            <tr>
+                <td>Nombre:</td>
+                <td><g:textField name="nombre">nombre</g:textField></td>
+            </tr>
+            <tr>
+                <td>Apellido Paterno:</td>
+                <td><g:textField name="apellidoPaterno"></g:textField></td>
+            </tr>
+            <tr>
+                <td>Apellido Materno:</td>
+                <td><g:textField name="apellidoMaterno"></g:textField></td>
+            </tr>
+            <tr>
+                <td>Edad:</td>
+                <td><g:textField name="edad"></g:textField></td>
+            </tr>
+            <tr>
+                <td><g:submitButton name="botonCrear" value="Crear" /></td>
+            </tr>
         </g:form>
+    </table>
+
 </body>
 </html>

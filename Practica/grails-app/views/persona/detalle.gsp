@@ -11,26 +11,26 @@
     <title></title>
 </head>
 
-<body>
-    <h1>Detalles</h1>
-    <table>
+<body bgcolor="#8b0000">
+    <h1 align="center">Detalles</h1>
+    <table border="2px" align="center">
         <thead>
         <tr>
-            <td>Nombre</td>
-            <td>Apellido Paterno</td>
-            <td>Apellido Materno</td>
-            <td>Edad</td>
-            <td>Fecha</td>
+            <td align="center">Nombre</td>
+            <td align="center">Apellido Paterno</td>
+            <td align="center">Apellido Materno</td>
+            <td align="center">Edad</td>
+            <td align="center">Fecha de Registro</td>
         </tr>
         </thead>
         <tbody>
         <g:each in="${personas}" var="persona">
             <tr>
-                <td>${persona.nombre}</td>
-                <td>${persona.apellidoPaterno}</td>
-                <td>${persona.apellidoMaterno}</td>
-                <td>${persona.edad}</td>
-                <td>${persona.fechaNacimiento}</td>
+                <td align="center">${persona.nombre}</td>
+                <td align="center">${persona.apellidoPaterno}</td>
+                <td align="center">${persona.apellidoMaterno}</td>
+                <td align="center">${persona.edad}</td>
+                <td align="center">${persona.fechaNacimiento.format("dd/M/yyyy")}</td>
             </tr>
         </g:each>
         </tbody>
