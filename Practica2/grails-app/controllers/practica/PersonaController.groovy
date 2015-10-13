@@ -25,4 +25,9 @@ class PersonaController {
         List<Persona> personas = personaService.listarPersonas(persona)
         render(view: '/persona/detalle', model: [personas:personas])
     }
+
+    def buscar(){
+        println "Entro en ${params.fecha} buscar caon"
+        println "Buscado"
+    }
 }

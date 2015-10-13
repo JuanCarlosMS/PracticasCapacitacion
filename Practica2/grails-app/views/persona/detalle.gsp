@@ -8,7 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
+    <title>Listado</title>
+    <g:javascript library="jquery"/>
+    <r:layoutResources />
 </head>
 
 <body bgcolor="#8b0000">
@@ -18,10 +20,21 @@
     <g:form controller="persona" action="create">
         <div align="center">
             <button name="crear" type="submit">Crear</button>
-            <g:textField name="busquedaPorFechaNacimiento"/>
-            <button>Busqueda</button>
+            <g:select name="filtroBusqueda" from="${['Fecha', 'Nombre']}"/>
+
         </div>
     </g:form>
+
+
+    <g:textField name="buscarFecha"/>
+    <button onclick="myFuncion()">Buscar2</button>
+
+    <script>
+        function myFuncion(){
+            var fechaABuscar = document.getElementById("buscarFecha").value
+            ${remoteFunction(controller: 'persona', action: 'buscar', params:'\'fecha=\' + fechaABuscar')}
+        }
+    </script>
 
 
     <di id = "listadoDetalle">
