@@ -14,31 +14,33 @@
 </head>
 
 <body bgcolor="#8b0000">
-    <h1 align="center">Detalles</h1>
+    <div id ="titulo">
+        <h1 align="center">Detalles</h1>
+    </div>
 
 
-    <g:form controller="persona" action="create">
         <div align="center">
-            <button name="crear" type="submit">Crear</button>
-            <g:select name="filtroBusqueda" from="${['Fecha', 'Nombre']}"/>
+            <g:form controller="persona" action="create">
+                <button name="crear" type="submit">Crear</button>
+                <g:select name="filtroBusqueda" from="${['Fecha', 'Nombre']}"/>
+            </g:form>
 
         </div>
-    </g:form>
 
 
-    <g:textField name="buscarFecha"/>
-    <button onclick="myFuncion()">Buscar2</button>
+    <div id="buquedaPorFecha" >
+        <g:render template="buscarPorFecha"/>
+    </div>
 
-    <script>
-        function myFuncion(){
-            var fechaABuscar = document.getElementById("buscarFecha").value
-            ${remoteFunction(controller: 'persona', action: 'buscar', params:'\'fecha=\' + fechaABuscar')}
-        }
-    </script>
 
 
     <di id = "listadoDetalle">
-        <g:render template="listadoDetallePersona"/>
+        <g:render template="listadoDetallePersona" model="[lista:lista]"/>
     </di>
+
+
+
+
+
 </body>
 </html>

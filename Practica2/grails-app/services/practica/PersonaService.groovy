@@ -26,6 +26,11 @@ class PersonaService {
         persona
     }
 
+    List<Persona> buscarPersonaFecha(params){
+        List<Persona> listaPersonaFecha = Persona.findAllByNombre(params.fecha)
+        listaPersonaFecha
+    }
+
     List<Persona> listarPersonas(params) {
         //params.nombre = "juan"
         //params.apellidoPaterno = "Leal"

@@ -8,7 +8,7 @@ class PersonaController {
     def index() {
         //List<Persona> personas = personaService.listarPersonas(params)
         //render(view: '/persona/index', model:[personas:personas])
-        render(view: '/persona/detalle')
+        //render(view: '/persona/detalle')
     }
 
     def create() {
@@ -27,7 +27,8 @@ class PersonaController {
     }
 
     def buscar(){
-        println "Entro en ${params.fecha} buscar caon"
-        println "Buscado"
+        List<Persona> personas = personaService.buscarPersonaFecha(params)
+        //render (view: '/persona/detalle', model: [personas:personas])
+        render (template: "listadoDetallePersona", model: [personas: personas])
     }
 }
