@@ -18,7 +18,7 @@
         <tr>
             <td>Fecha de nacimiento:</td>
             <td><g:datePicker name="fechaNacimineto" value="${new Date()}"
-                              precision="day" noSelection="['':'-Choose-']"/></td>
+                              precision="day" noSelection="['':'-Choose-']" years="${1900..2015}"/></td>
         </tr>
         <tr>
             <td><g:submitButton name="botonCrear" value="Crear" /></td>

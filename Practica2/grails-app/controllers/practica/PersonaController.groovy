@@ -5,6 +5,8 @@ class PersonaController {
     def personaService
     def persona
 
+    static defaultAction = "detalle"
+
     def index() {
         //List<Persona> personas = personaService.listarPersonas(params)
         //render(view: '/persona/index', model:[personas:personas])
@@ -27,8 +29,27 @@ class PersonaController {
     }
 
     def buscar(){
-        List<Persona> personas = personaService.buscarPersonaFecha(params)
+        println("Entraste a buscar")
+        println("params::::" + params)
+        //List<Persona> personas = personaService.buscarPersonaNombre(params)
         //render (view: '/persona/detalle', model: [personas:personas])
-        render (template: "listadoDetallePersona", model: [personas: personas])
+        //render (template: "listadoDetallePersona", model: [personas: personas])
+    }
+
+    def busquedas()
+    {
+        println("Criterio de busqeuda: " + params)
+        String criterioBusqueda = params.filtro
+        if (criterioBusqueda.equals("Nombre"))
+        {
+            println("Bucar por nombre")
+            render (template: "buscarPorFecha", model: [busqueda: 1])
+        }else if (criterioBusqueda.equals("Fechas")) {
+            println("Bucar por Fecha")
+            render (template: "buscarPorFecha", model: [busqueda: 2])
+        }else if(criterioBusqueda.equals("Apellido Materno")){
+            println("Bucar por Apellido Materno")
+            render (template: "buscarPorFecha", model: [busqueda: 3])
+        }
     }
 }

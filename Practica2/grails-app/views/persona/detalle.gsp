@@ -11,9 +11,10 @@
     <title>Listado</title>
     <g:javascript library="jquery"/>
     <r:layoutResources />
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'detalles.css')}" type="text/css">
 </head>
 
-<body bgcolor="#8b0000">
+<body bgcolor="#b22222">
     <div id ="titulo">
         <h1 align="center">Detalles</h1>
     </div>
@@ -22,21 +23,25 @@
         <div align="center">
             <g:form controller="persona" action="create">
                 <button name="crear" type="submit">Crear</button>
-                <g:select name="filtroBusqueda" from="${['Fecha', 'Nombre']}"/>
             </g:form>
 
         </div>
 
+    <div id="criterioBusqueda">
+        <g:render template="selectorBusqueda"/>
+    </div>
 
-    <div id="buquedaPorFecha" >
+    <div id="busqueda">
         <g:render template="buscarPorFecha"/>
     </div>
 
 
 
-    <di id = "listadoDetalle">
+    <div id="listadoDetalle" align="center">
         <g:render template="listadoDetallePersona" model="[lista:lista]"/>
-    </di>
+    </div>
+
+
 
 
 

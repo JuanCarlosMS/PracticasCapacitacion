@@ -26,8 +26,9 @@ class PersonaService {
         persona
     }
 
-    List<Persona> buscarPersonaFecha(params){
-        List<Persona> listaPersonaFecha = Persona.findAllByNombre(params.fecha)
+    List<Persona> buscarPersonaNombre(params){
+        println("Params service:::: " + params)
+        List<Persona> listaPersonaFecha = Persona.findAllByNombre(params?.buscar)
         listaPersonaFecha
     }
 
