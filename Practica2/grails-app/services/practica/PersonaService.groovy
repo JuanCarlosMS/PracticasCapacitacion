@@ -1,7 +1,9 @@
 package practica
 
 import grails.transaction.Transactional
-import practica.Persona;
+import practica.Persona
+
+import java.text.SimpleDateFormat;
 
 @Transactional
 class PersonaService {
@@ -28,18 +30,31 @@ class PersonaService {
 
     List<Persona> buscarPersonaNombre(params){
         println("Params service:::: " + params)
-        List<Persona> listaPersonaFecha = Persona.findAllByNombre(params?.buscar)
+        List<Persona> listaPersonaFecha = Persona.findAllByNombre(params?.busqueda)
         listaPersonaFecha
     }
 
+    List<Persona> buscarPErsonaApellidoMaterno(params){
+        println("Params service:::: " + params)
+        List<Persona> listaPersonaApMaterno = Persona.findAllByApellidoMaterno(params?.busqueda)
+        listaPersonaApMaterno
+    }
+
+    List<Persona> buscarPersonaPorFechasNacimiento(params){
+        println("Params service:::: " + params)
+        String fechaInicial = params?.fechaInicio
+        String fechaFinal = params?.fechaFinal
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd")
+        Date dateInicial = formatter.parse(fechaInicial)
+        Date dateFinal = formatter.parse(fechaFinal)
+
+        //Date fecha = new Date(dia, mes, anio)
+        List<Persona> listaPersonaFechas = Persona.findAllByFechaNacimientoBetween(dateInicial, dateFinal)
+        listaPersonaFechas
+    }
+
     List<Persona> listarPersonas(params) {
-        //params.nombre = "juan"
-        //params.apellidoPaterno = "Leal"
-        //params.apellidoMaterno = "Sion"
-        //params.fechaNacimiento = new Date()
-        //params.edad = 22
-        //guardarPersona(params)
-        //params.fechaNacimiento = consultarPersona(params.id);
+
         List<Persona> listaPersonas = Persona.findAll()
         listaPersonas
     }

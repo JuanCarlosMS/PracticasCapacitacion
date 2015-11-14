@@ -2,28 +2,34 @@
 
 <g:if test="${busqueda == 1}">
     <g:textField name="buscarNombre"/>
-    <button onclick="myFuncion()">Buscar</button>
+    <button onclick="busquedaNombre()">Buscar</button>
 </g:if>
 <g:if test="${busqueda == 2}">
-    <g:datePicker name="fechaDesde" value="${new Date()}"
-                  precision="day" years="${1900..2015}"/>
-    <br>
-    <g:datePicker name="fechaHasta" value="${new Date()}"
-                  precision="day" years="${1900..2015}"/>
-    <button onclick="myFuncion()">Buscar</button>
+    <input type="date" name="feechaInicioi" id="fechaInicio">
+    <input type="date" name="fechafinal" id="fechaFinal">
+    <button onclick="busquedaFechas()">Buscar</button>
 </g:if>
 <g:if test="${busqueda == 3}">
     <g:textField name="buscarApM"/>
-    <button onclick="${remoteFunction(controller: 'persona', action: 'buscar', params:'\'apM=\' + this.value'  , update: 'listadoDetalle')}">Buscar</button>
+    <button onclick="busquedaApM()">Busqueda</button>
 </g:if>
 
 <script>
-    function myFuncion(){
+
+    function busquedaNombre() {
         var busquedaNombre = document.getElementById("buscarNombre").value
-        var busquedaFechaDesde = document.getElementById("fechaDesde").value
-        var busquedaFechaHasta = document.getElementById("fechaHasta").value
+        ${remoteFunction(controller: 'persona', action: 'buscar', params:'\'busqueda=\' + busquedaNombre', update: 'listadoDetalle')}
+
+    }
+    function busquedaFechas() {
+        var fechaInicio = document.getElementById("fechaInicio").value
+        var fechaFinal = document.getElementById("fechaFinal").value
+        ${remoteFunction(controller: 'persona', action: 'buscarPersonaRangoFechas', params:'\'fechaInicio=\' + fechaInicio + \'&fechaFinal=\' + fechaFinal', update: 'listadoDetalle')}
+
+    }
+    function busquedaApM() {
         var busquedaApM = document.getElementById("buscarApM").value
-        ${remoteFunction(controller: 'persona', action: 'buscar', params:'\'busquedaNombre=\' + busquedaNombre' , update: 'listadoDetalle')}
+        ${remoteFunction(controller: 'persona', action: 'buscarApMaterno', params:'\'busqueda=\' + busquedaApM', update: 'listadoDetalle')}
 
     }
 </script>

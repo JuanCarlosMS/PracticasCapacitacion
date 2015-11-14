@@ -20,7 +20,7 @@ class PersonaController {
     def guardar(){
         persona = personaService.guardarPersona(params)
         //render(view: '/persona/detalle')
-        detalle()
+        redirect(action: 'detalle')
     }
 
     def detalle(){
@@ -31,9 +31,25 @@ class PersonaController {
     def buscar(){
         println("Entraste a buscar")
         println("params::::" + params)
-        //List<Persona> personas = personaService.buscarPersonaNombre(params)
+        List<Persona> personas = personaService.buscarPersonaNombre(params)
         //render (view: '/persona/detalle', model: [personas:personas])
-        //render (template: "listadoDetallePersona", model: [personas: personas])
+        render (template: "listadoDetallePersona", model: [personas: personas])
+    }
+
+    def buscarApMaterno()
+    {
+        println("Entraste a buscar APM")
+        println("params::::" + params)
+        List<Persona> personas = personaService.buscarPErsonaApellidoMaterno(params)
+        render (template: "listadoDetallePersona", model: [personas: personas])
+    }
+
+    def buscarPersonaRangoFechas()
+    {
+        println("Entraste a buscar Buscar por Rango fechas")
+        println("params::::" + params)
+        List<Persona> personas = personaService.buscarPersonaPorFechasNacimiento(params)
+        render (template: "listadoDetallePersona", model: [personas: personas])
     }
 
     def busquedas()
